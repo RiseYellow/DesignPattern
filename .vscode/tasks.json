@@ -1,0 +1,48 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "cmake",
+            "command": "cmake",
+            "args": [
+                ".."
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [],
+        },
+        {
+            "type": "shell",
+            "label": "make",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "dependsOn": [
+                "cmake"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "print debug",
+            "command": "echo",
+            "args": [
+                "build vstest complite !"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "make"
+            ],
+            "problemMatcher": []
+        }
+    ],
+    "version": "2.0.0"
+}

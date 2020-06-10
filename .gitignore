@@ -114,7 +114,7 @@ bld/
 #wwwroot/
 
 # vscode
-.vscode
+# .vscode
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
