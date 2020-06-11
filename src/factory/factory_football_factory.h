@@ -1,6 +1,7 @@
 #pragma once
+#include <memory>
+
 #include "factory_interface.h"
-#include "memory"
 #include "product.h"
 namespace factory {
 class FootballFactory : public IFactory {

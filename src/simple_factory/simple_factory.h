@@ -1,5 +1,6 @@
 #pragma once
-#include "memory"
+#include <memory>
+
 #include "product.h"
 namespace simple_factory {
 class SimpleFactory {
