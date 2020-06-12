@@ -2,6 +2,16 @@
     "tasks": [
         {
             "type": "shell",
+            "label": "mkdir build",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "build"
+            ],
+            "problemMatcher": [],
+        },
+        {
+            "type": "shell",
             "label": "cmake",
             "command": "cmake",
             "args": [
@@ -10,6 +20,9 @@
             "options": {
                 "cwd": "${workspaceFolder}/build"
             },
+            "dependsOn": [
+                "mkdir build"
+            ],
             "problemMatcher": [],
         },
         {

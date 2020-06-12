@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "lldb",
-            "type": "lldb",
+            "name": "gdb",
+            "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/build/src/design_pattern",
             "args": [],
