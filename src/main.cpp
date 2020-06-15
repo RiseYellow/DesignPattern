@@ -4,6 +4,7 @@
 #include "abstract_factory/abstract_factory.h"
 #include "builder/builder.h"
 #include "factory/factory.h"
+#include "prototype/prototype.h"
 #include "simple_factory/simple_factory.h"
 
 void print_func_begin(const std::string& func_name) {
@@ -69,12 +70,26 @@ void test_builder() {
 
     print_func_end("builder");
 }
+void test_prototype() {
+    print_func_begin("prototype");
+    prototype::CoffeeCup coffee_cup;
+    coffee_cup.SetCupColor("green");
+    coffee_cup.SetCupName("green coffee cup");
+    coffee_cup.PrintCupInfo();
+
+    auto new_coffee_cup = coffee_cup.clone();
+    new_coffee_cup->SetCupName("new coffee cup");
+    new_coffee_cup->PrintCupInfo();
+
+    print_func_end("prototype");
+}
 
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
     test_abstract_factory();
     test_builder();
+    test_prototype();
 
     return 0;
 }
