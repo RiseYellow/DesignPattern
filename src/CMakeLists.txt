@@ -8,6 +8,7 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/create_mode/factory FACTORY_SRC
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/create_mode/abstract_factory ABSTRACT_FACTORY_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/create_mode/builder BUILDER_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/create_mode/prototype PROTOTYPE_SRC)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/create_mode/singleton SINGLETON_SRC)
 
 add_executable(design_pattern 
     ${MAIN_SRC} 
@@ -16,4 +17,5 @@ add_executable(design_pattern
     ${ABSTRACT_FACTORY_SRC} 
     ${BUILDER_SRC} 
     ${PROTOTYPE_SRC}
- )
+    ${SINGLETON_SRC}
+)

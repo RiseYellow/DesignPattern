@@ -6,6 +6,7 @@
 #include "factory/factory.h"
 #include "prototype/prototype.h"
 #include "simple_factory/simple_factory.h"
+#include "singleton/singleton.h"
 
 void print_func_begin(const std::string& func_name) {
     std::cout.setf(std::ios::right);
@@ -83,6 +84,18 @@ void test_prototype() {
 
     print_func_end("prototype");
 }
+void test_singleton() {
+    print_func_begin("singleton");
+    std::cout << singleton::DeviceInfoSigleton::GetInstance().GetDeivceName()
+              << std::endl;
+    singleton::DeviceInfoSigleton::GetInstance().SetDeviceName(
+            "new singleton device");
+
+    std::cout << singleton::DeviceInfoSigleton::GetInstance().GetDeivceName()
+              << std::endl;
+
+    print_func_end("singleton");
+}
 
 int main(int argc, char const* argv[]) {
     test_simple_factory();
@@ -90,6 +103,7 @@ int main(int argc, char const* argv[]) {
     test_abstract_factory();
     test_builder();
     test_prototype();
+    test_singleton();
 
     return 0;
 }
