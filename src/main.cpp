@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "abstract_factory/abstract_factory.h"
+#include "builder/builder.h"
 #include "factory/factory.h"
 #include "simple_factory/simple_factory.h"
 
@@ -22,13 +23,24 @@ void print_func_end(const std::string& func_name) {
 
 void test_simple_factory() {
     print_func_begin("simple factory");
-    simple_factory::SimpleFactory simple_factory{};
+    simple_factory::SimpleFactory simple_factory;
     std::cout << simple_factory.GetProductByName("football")->GetName()
               << std::endl;
 
     std::cout << simple_factory.GetProductByName("basketball")->GetName()
               << std::endl;
     print_func_end("simple factory");
+}
+
+void test_factory() {
+    print_func_begin("factory");
+    std::shared_ptr<factory::IFactory> factory =
+            std::make_shared<factory::FootballFactory>();
+    std::cout << factory->GetProduct()->GetName() << std::endl;
+
+    factory = std::make_shared<factory::BasketballFactory>();
+    std::cout << factory->GetProduct()->GetName() << std::endl;
+    print_func_end("factory");
 }
 
 void test_abstract_factory() {
@@ -46,21 +58,23 @@ void test_abstract_factory() {
     print_func_end("abstract factory");
 }
 
-void test_factory() {
-    print_func_begin("factory");
-    std::shared_ptr<factory::IFactory> factory =
-            std::make_shared<factory::FootballFactory>();
-    std::cout << factory->GetProduct()->GetName() << std::endl;
+void test_builder() {
+    print_func_begin("builder");
+    builder::Director director;
+    director.SetBuilder(std::make_shared<builder::ABuilder>());
+    director.BuildHouse()->PrintHouseInfo();
 
-    factory = std::make_shared<factory::BasketballFactory>();
-    std::cout << factory->GetProduct()->GetName() << std::endl;
-    print_func_end("factory");
+    director.SetBuilder(std::make_shared<builder::BBuilder>());
+    director.BuildHouse()->PrintHouseInfo();
+
+    print_func_end("builder");
 }
 
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
     test_abstract_factory();
+    test_builder();
 
     return 0;
 }
