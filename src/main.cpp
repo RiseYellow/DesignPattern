@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "abstract_factory/abstract_factory.h"
+#include "adapter/adapter.h"
 #include "builder/builder.h"
 #include "factory/factory.h"
 #include "prototype/prototype.h"
@@ -96,7 +97,17 @@ void test_singleton() {
 
     print_func_end("singleton");
 }
+void test_adapter() {
+    print_func_begin("adapter");
+    std::shared_ptr<adapter::ASocket> asocket =
+            std::make_shared<adapter::ASocket>();
+    asocket->charge();
 
+    asocket = std::make_shared<adapter::B2AAdapter>();
+    asocket->charge();
+
+    print_func_end("adapter");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -104,6 +115,7 @@ int main(int argc, char const* argv[]) {
     test_builder();
     test_prototype();
     test_singleton();
+    test_adapter();
 
     return 0;
 }
