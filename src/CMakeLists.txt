@@ -12,6 +12,7 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/creative_mode/prototype PROTOTY
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/creative_mode/singleton SINGLETON_SRC)
 
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/adapter ADAPTER_SRC)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/decorator DECORATOR_SRC)
 
 add_executable(design_pattern 
 #creative mode
@@ -26,4 +27,5 @@ add_executable(design_pattern
 
 #structural mode
     ${ADAPTER_SRC}
+    ${DECORATOR_SRC}
 )

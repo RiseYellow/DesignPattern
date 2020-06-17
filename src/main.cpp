@@ -4,6 +4,7 @@
 #include "abstract_factory/abstract_factory.h"
 #include "adapter/adapter.h"
 #include "builder/builder.h"
+#include "decorator/decorator.h"
 #include "factory/factory.h"
 #include "prototype/prototype.h"
 #include "simple_factory/simple_factory.h"
@@ -108,6 +109,18 @@ void test_adapter() {
 
     print_func_end("adapter");
 }
+void test_decorator() {
+    print_func_begin("decorator");
+
+    std::shared_ptr<decorator::Human> human =
+            std::make_shared<decorator::Women>();
+    std::shared_ptr<decorator::WomenDecorator> women_decoraor =
+            std::make_shared<decorator::ClothDecorator>(
+                    std::make_shared<decorator::ShoesDecorator>(human));
+    women_decoraor->Outlook();
+
+    print_func_end("decorator");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -116,6 +129,7 @@ int main(int argc, char const* argv[]) {
     test_prototype();
     test_singleton();
     test_adapter();
+    test_decorator();
 
     return 0;
 }
