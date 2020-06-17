@@ -2,8 +2,8 @@
 #include <iostream>
 #include <memory>
 
-#include "ASocket.h"
-#include "BPlug.h"
+#include "A_socket.h"
+#include "B_plug.h"
 namespace adapter {
 class B2AAdapter : public ASocket {
 private:
