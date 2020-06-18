@@ -3,6 +3,7 @@
 
 #include "abstract_factory/abstract_factory.h"
 #include "adapter/adapter.h"
+#include "bridge/bridge.h"
 #include "builder/builder.h"
 #include "decorator/decorator.h"
 #include "factory/factory.h"
@@ -121,6 +122,22 @@ void test_decorator() {
 
     print_func_end("decorator");
 }
+void test_bridge() {
+    print_func_begin("bridge");
+
+    std::shared_ptr<bridge::IGame> game = std::make_shared<bridge::AGame>();
+    std::shared_ptr<bridge::IPhone> phone = std::make_shared<bridge::APhone>();
+
+    phone->SetGame(game);
+    phone->PlayGame();
+
+    game = std::make_shared<bridge::BGame>();
+    phone = std::make_shared<bridge::BPhone>();
+    phone->SetGame(game);
+    phone->PlayGame();
+
+    print_func_end("bridge");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -130,6 +147,7 @@ int main(int argc, char const* argv[]) {
     test_singleton();
     test_adapter();
     test_decorator();
+    test_bridge();
 
     return 0;
 }
