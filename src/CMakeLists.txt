@@ -14,6 +14,7 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/creative_mode/singleton SINGLET
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/adapter ADAPTER_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/decorator DECORATOR_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/bridge BRIDGE_SRC)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/compose COMPOSE_SRC)
 
 add_executable(design_pattern 
 #creative mode
@@ -30,4 +31,5 @@ add_executable(design_pattern
     ${ADAPTER_SRC}
     ${DECORATOR_SRC}
     ${BRIDGE_SRC}
+    ${COMPOSE_SRC}
 )

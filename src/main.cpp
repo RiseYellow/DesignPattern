@@ -5,6 +5,7 @@
 #include "adapter/adapter.h"
 #include "bridge/bridge.h"
 #include "builder/builder.h"
+#include "compose/compose.h"
 #include "decorator/decorator.h"
 #include "factory/factory.h"
 #include "prototype/prototype.h"
@@ -138,6 +139,17 @@ void test_bridge() {
 
     print_func_end("bridge");
 }
+void test_compose() {
+    print_func_begin("compose");
+    std::shared_ptr<compose::INode> tree =
+            std::make_shared<compose::TreeNode>("tree");
+    tree->AddNode(std::make_shared<compose::RedLeafNode>("A red leaf node"));
+    tree->AddNode(
+            std::make_shared<compose::BlackLeafNode>("A black leaf node"));
+    tree->PrintName();
+
+    print_func_end("compose");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -148,6 +160,7 @@ int main(int argc, char const* argv[]) {
     test_adapter();
     test_decorator();
     test_bridge();
+    test_compose();
 
     return 0;
 }
