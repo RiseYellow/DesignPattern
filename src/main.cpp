@@ -7,6 +7,7 @@
 #include "builder/builder.h"
 #include "compose/compose.h"
 #include "decorator/decorator.h"
+#include "facade/facade.h"
 #include "factory/factory.h"
 #include "prototype/prototype.h"
 #include "simple_factory/simple_factory.h"
@@ -150,6 +151,13 @@ void test_compose() {
 
     print_func_end("compose");
 }
+void test_facade() {
+    print_func_begin("facade");
+    facade::Computer computer;
+    computer.PowerOn();
+
+    print_func_end("facade");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -161,6 +169,7 @@ int main(int argc, char const* argv[]) {
     test_decorator();
     test_bridge();
     test_compose();
+    test_facade();
 
     return 0;
 }
