@@ -15,6 +15,8 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/adapter ADAPTER
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/decorator DECORATOR_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/bridge BRIDGE_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/compose COMPOSE_SRC)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/facade FACADE_SRC)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/flyweight FLYWEIGHT_SRC)
 
 add_executable(design_pattern 
 #creative mode
@@ -32,4 +34,6 @@ add_executable(design_pattern
     ${DECORATOR_SRC}
     ${BRIDGE_SRC}
     ${COMPOSE_SRC}
+    ${FACADE_SRC}
+    ${FLYWEIGHT_SRC}
 )

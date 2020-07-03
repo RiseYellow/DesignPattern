@@ -9,6 +9,7 @@
 #include "decorator/decorator.h"
 #include "facade/facade.h"
 #include "factory/factory.h"
+#include "flyweight/flyweight.h"
 #include "prototype/prototype.h"
 #include "simple_factory/simple_factory.h"
 #include "singleton/singleton.h"
@@ -158,6 +159,18 @@ void test_facade() {
 
     print_func_end("facade");
 }
+void test_flyweight() {
+    print_func_begin("flyweight");
+    std::cout << flyweight::NetDeviceFactory::GetInstance()
+                         .GetNetDeviceByType(flyweight::NetDeviceType::kRoute)
+                         ->GetDeviceName()
+              << std::endl;
+    std::cout << flyweight::NetDeviceFactory::GetInstance()
+                         .GetNetDeviceByType(flyweight::NetDeviceType::kSwitch)
+                         ->GetDeviceName()
+              << std::endl;
+    print_func_end("flyweight");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -170,6 +183,7 @@ int main(int argc, char const* argv[]) {
     test_bridge();
     test_compose();
     test_facade();
+    test_flyweight();
 
     return 0;
 }
