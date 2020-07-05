@@ -2,6 +2,7 @@
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/creative_mode)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/behavioral_mode)
 
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} MAIN_SRC )
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/creative_mode/simple_factory SIMPLE_FACTORY_SRC)
@@ -17,6 +18,9 @@ aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/bridge BRIDGE_S
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/compose COMPOSE_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/facade FACADE_SRC)
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/flyweight FLYWEIGHT_SRC)
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/structural_mode/proxy PROXY_SRC)
+
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/behavioral_mode/chain_of_responsibility CHAIN_OF_RESPOINSIBILITY_SRC)
 
 add_executable(design_pattern 
 #creative mode
@@ -36,4 +40,8 @@ add_executable(design_pattern
     ${COMPOSE_SRC}
     ${FACADE_SRC}
     ${FLYWEIGHT_SRC}
+    ${PROXY_SRC}
+
+#behavioral_mode
+    ${CHAIN_OF_RESPOINSIBILITY_SRC}
 )

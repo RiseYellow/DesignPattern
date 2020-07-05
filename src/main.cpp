@@ -5,6 +5,7 @@
 #include "adapter/adapter.h"
 #include "bridge/bridge.h"
 #include "builder/builder.h"
+#include "chain_of_responsibility/chain_of_responsibility.h"
 #include "compose/compose.h"
 #include "decorator/decorator.h"
 #include "facade/facade.h"
@@ -178,6 +179,37 @@ void test_proxy() {
     human->DoThings();
     print_func_end("proxy");
 }
+void test_chain_of_responsibility() {
+    print_func_begin("chain_of_responsibility");
+    chain_of_responsibility::Bill bill1("bill1", 30);
+    chain_of_responsibility::Bill bill2("bill2", 80);
+    chain_of_responsibility::Bill bill3("bill3", 200);
+
+    std::shared_ptr<chain_of_responsibility::IWorker> first_worker =
+            std::make_shared<chain_of_responsibility::FirstWorker>();
+    std::shared_ptr<chain_of_responsibility::IWorker> sec_worker =
+            std::make_shared<chain_of_responsibility::SecWorker>();
+    std::shared_ptr<chain_of_responsibility::IWorker> third_worker =
+            std::make_shared<chain_of_responsibility::ThirdWorker>();
+
+    first_worker->SetNextWorker(sec_worker);
+    sec_worker->SetNextWorker(third_worker);
+
+    std::cout << "-------------------" << std::endl
+              << "Bill name : " << bill1.GetBillName() << " money "
+              << bill1.GetSumOfMoney() << std::endl;
+    first_worker->HandlerRequest(bill1);
+    std::cout << "-------------------" << std::endl
+              << "Bill name : " << bill2.GetBillName() << " money "
+              << bill2.GetSumOfMoney() << std::endl;
+    first_worker->HandlerRequest(bill2);
+    std::cout << "-------------------" << std::endl
+              << "Bill name : " << bill3.GetBillName() << " money "
+              << bill3.GetSumOfMoney() << std::endl;
+    first_worker->HandlerRequest(bill3);
+
+    print_func_end("chain_of_responsibility");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -192,6 +224,7 @@ int main(int argc, char const* argv[]) {
     test_facade();
     test_flyweight();
     test_proxy();
+    test_chain_of_responsibility();
 
     return 0;
 }
