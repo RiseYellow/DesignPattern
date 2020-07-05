@@ -11,6 +11,7 @@
 #include "factory/factory.h"
 #include "flyweight/flyweight.h"
 #include "prototype/prototype.h"
+#include "proxy/proxy.h"
 #include "simple_factory/simple_factory.h"
 #include "singleton/singleton.h"
 
@@ -171,6 +172,12 @@ void test_flyweight() {
               << std::endl;
     print_func_end("flyweight");
 }
+void test_proxy() {
+    print_func_begin("proxy");
+    std::shared_ptr<proxy::IHuman> human = std::make_shared<proxy::StarAgent>();
+    human->DoThings();
+    print_func_end("proxy");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -184,6 +191,7 @@ int main(int argc, char const* argv[]) {
     test_compose();
     test_facade();
     test_flyweight();
+    test_proxy();
 
     return 0;
 }
