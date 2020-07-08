@@ -6,6 +6,7 @@
 #include "bridge/bridge.h"
 #include "builder/builder.h"
 #include "chain_of_responsibility/chain_of_responsibility.h"
+#include "command/command.h"
 #include "compose/compose.h"
 #include "decorator/decorator.h"
 #include "facade/facade.h"
@@ -210,6 +211,15 @@ void test_chain_of_responsibility() {
 
     print_func_end("chain_of_responsibility");
 }
+void test_command() {
+    print_func_begin("command");
+    command::Button button;
+    button.SetCommand(std::make_shared<command::FanCommand>());
+    button.PressButton();
+    button.SetCommand(std::make_shared<command::LightCommand>());
+    button.PressButton();
+    print_func_end("command");
+}
 int main(int argc, char const* argv[]) {
     test_simple_factory();
     test_factory();
@@ -225,6 +235,7 @@ int main(int argc, char const* argv[]) {
     test_flyweight();
     test_proxy();
     test_chain_of_responsibility();
+    test_command();
 
     return 0;
 }
